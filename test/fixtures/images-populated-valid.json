@@ -1,0 +1,10 @@
+{
+  "status": {
+    "summary": {
+      "images": [
+        "other-org/other-app:1.2.3",
+        "my-org/my-app:1.2.3"
+      ]
+    }
+  }
+}

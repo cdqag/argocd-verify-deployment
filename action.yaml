@@ -1,0 +1,36 @@
+name: argocd-verify-deployment
+description: GitHub Action for verifying deployment in ArgoCD
+author: 'Marek Sierociński <marek.sierocinski@cdq.com>'
+
+branding:
+  icon: 'check-square'
+  color: 'orange'
+
+inputs:
+  app-name:
+    description: 'Application name'
+    required: true
+
+  app-version:
+    description: 'Application version'
+    required: true
+
+  docker-org:
+    description: 'Docker organization (namespace)'
+    required: true
+
+  hard-refresh:
+    description: 'Hard refresh ArgoCD application'
+    default: 'true'
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: ./src/verify.sh
+      working-directory: ${{ github.action_path }}
+      env:
+        APP_NAME: ${{ inputs.app-name }}
+        APP_VERSION: ${{ inputs.app-version }}
+        DOCKER_ORG: ${{ inputs.docker-org }}
+        HARD_REFRESH: ${{ inputs.hard-refresh }}

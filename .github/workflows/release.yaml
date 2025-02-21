@@ -16,7 +16,7 @@ jobs:
     needs: test
     uses: cdqag/workflow-public/.github/workflows/release-action-to-branch.yaml@v1
     with:
-      runs-on: hosted-runner
+      runs-on: ubuntu-latest
       version: ${{ inputs.version }}
     secrets:
       ssh-key: ${{ secrets.BOT_SSH_KEY }}
